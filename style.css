@@ -44,16 +44,13 @@ h1 {
 }
 
 h2 {
-  color: var(--pri-col);
+  color: var(--sec-col);
 }
 
 a {
   text-decoration: none;
   color: var(--sec-col);
   animation: all 1s;
-  /* -webkit-animation: color 1s ease-out; */
-  /* -moz-animation: color 1s ease-out; */
-  /* animation: color 1s ease-out; */
 }
 
 a:hover {
@@ -93,6 +90,7 @@ a:hover {
   transition: color 0.5s, transform 0.5s;
   text-transform: uppercase;
 }
+
 .menu li a:hover {
   color: var(--sec-col);
   transform: scale(1.04);
@@ -173,6 +171,7 @@ header.solid {
   opacity: 50%;
   width: 8vh;
   height: 8vh;
+  cursor: pointer;
 }
 
 .hero-content {

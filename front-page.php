@@ -19,7 +19,9 @@ $hero_text_array = json_decode(
                 array("for", "God's", "glory"),
             )
         )
-    ), true);
+    ),
+    true
+);
 ?>
 
 <section class="hero" style="background-image: url('<?php echo esc_url($hero_bg_image); ?>');">
@@ -32,7 +34,7 @@ $hero_text_array = json_decode(
                 <h3 id="line3" class="text-line" style="color: var(--sec-col);">church</h3>
             </div>
             <script>
-                const texts = $hero_text_array;
+                const texts = <?php echo json_encode($hero_text_array); ?>;
 
                 let currentSet = 0;
                 const line1 = document.getElementById('line1');
@@ -73,7 +75,8 @@ $hero_text_array = json_decode(
                     currentSet = nextSet;
                 }
 
-                setInterval(updateText, 4000);
+                setInterval(updateText, 3000);
+                
             </script>
             <h2><?php echo esc_html($hero_subtitle); ?></h2>
             <div>
@@ -93,14 +96,14 @@ $hero_text_array = json_decode(
                 ?>
             </div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" class="hero-down bi bi-chevron-compact-down" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" id="hero-down-button" class="hero-down bi bi-chevron-compact-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
                 d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67" />
         </svg>
     </div>
 </section>
 
-<section class="main-content">
+<section id="main-content" class="main-content">
     <div class="container">
         <?php
         if (have_posts()) {

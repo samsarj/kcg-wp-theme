@@ -24,3 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+document.getElementById('hero-down-button').addEventListener('click', function () {
+    const mainContent = document.getElementById('main-content');
+    mainContent.scrollIntoView({ behavior: 'smooth' });
+});

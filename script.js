@@ -3,6 +3,7 @@ jQuery(document).ready(function ($) {
   $(".navbar-toggler").click(function () {
     if ($(".navbar-toggler").attr("aria-expanded") === "false") {
       $(".navbar-toggler-icon").addClass("navbar-toggler-icon-open");
+      $(".navbar").addClass("navbar-solid");
     } else {
       $(".navbar-toggler-icon").removeClass("navbar-toggler-icon-open");
     }
@@ -46,18 +47,31 @@ jQuery(document).ready(function ($) {
     const containerDesktop = $("#logo-desktop")[0]; // Select the desktop logo element
     const containerMobile = $("#logo-mobile")[0]; // Select the mobile logo element
 
-    if (theme === "dark") {
+    let effectiveTheme = theme;
+
+    if (theme === "auto") {
+      const prefersDarkScheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      effectiveTheme = prefersDarkScheme ? "dark" : "light";
+    }
+
+    if (effectiveTheme === "dark") {
       $("body").addClass("dark-mode");
       icon.removeClass("bi-sun").addClass("bi-moon");
-      localStorage.setItem("theme", "dark");
       loadAnimation("dark", containerDesktop); // Load dark mode animation for desktop
       loadAnimation("dark", containerMobile, true); // Load dark mode animation for mobile
     } else {
       $("body").removeClass("dark-mode");
       icon.removeClass("bi-moon").addClass("bi-sun");
-      localStorage.setItem("theme", "light");
       loadAnimation("light", containerDesktop); // Load light mode animation for desktop
       loadAnimation("light", containerMobile, true); // Load light mode animation for mobile
+    }
+
+    if (theme !== "auto") {
+      localStorage.setItem("theme", theme);
+    } else {
+      localStorage.removeItem("theme");
     }
   }
 
@@ -75,15 +89,21 @@ jQuery(document).ready(function ($) {
   });
 
   // Load saved theme and animation
-  const savedTheme = localStorage.getItem("theme");
-  setTheme(savedTheme ? savedTheme : "auto");
+  const savedTheme = localStorage.getItem("theme") || "auto";
+  setTheme(savedTheme);
 
   // Handle system preference change
-  window.matchMedia("(prefers-color-scheme: dark)").addListener((e) => {
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQuery.addListener((e) => {
     if (localStorage.getItem("theme") === "auto") {
       setTheme("auto");
     }
   });
+
+  // Ensure the theme updates on page load if the system preference changes while the page is open
+  if (savedTheme === "auto") {
+    setTheme("auto");
+  }
 
   // Scroll behavior for navbar
   let lastScrollTop = 0;
@@ -108,8 +128,16 @@ jQuery(document).ready(function ($) {
         animationPlayed = true;
         animationDesktop.playSegments([0, animationDesktop.totalFrames], true);
         animationMobile.playSegments([0, animationMobile.totalFrames], true);
-        gsap.to(logoDesktop, { height: "50px", duration: animationDuration });
-        gsap.to(logoMobile, { height: "50px", duration: animationDuration });
+        gsap.to(logoDesktop, {
+          height: "8vh",
+          duration: animationDuration,
+          ease: "none",
+        });
+        gsap.to(logoMobile, {
+          height: "8vh",
+          duration: animationDuration,
+          ease: "none",
+        });
       }
     } else {
       if (navbar.hasClass("navbar-solid")) {
@@ -120,8 +148,16 @@ jQuery(document).ready(function ($) {
         animationPlayed = false;
         animationDesktop.playSegments([animationDesktop.totalFrames, 0], true);
         animationMobile.playSegments([animationMobile.totalFrames, 0], true);
-        gsap.to(logoDesktop, { height: "100px", duration: animationDuration });
-        gsap.to(logoMobile, { height: "100px", duration: animationDuration });
+        gsap.to(logoDesktop, {
+          height: "18vh",
+          duration: animationDuration,
+          ease: "none",
+        });
+        gsap.to(logoMobile, {
+          height: "18vh",
+          duration: animationDuration,
+          ease: "none",
+        });
       }
     }
   }

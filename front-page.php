@@ -29,9 +29,9 @@ $hero_text_array = json_decode(
         <div class="hero-content">
             <h1><?php echo esc_html($hero_title); ?></h1>
             <div class="tagline">
-                <h3 id="line1" class="text-line" style="color: var(--sec-col);">Building</h3>
-                <h3 id="line2" class="text-line" style="color: var(--pri-col);">God's</h3>
-                <h3 id="line3" class="text-line" style="color: var(--sec-col);">church</h3>
+                <h2 id="line1" class="text-line" style="color: var(--sec-col);">Building</h3>
+                <h2 id="line2" class="text-line" style="color: var(--pri-col);">God's</h3>
+                <h2 id="line3" class="text-line" style="color: var(--sec-col);">church</h3>
             </div>
             <script>
                 const texts = <?php echo json_encode($hero_text_array); ?>;
@@ -78,7 +78,7 @@ $hero_text_array = json_decode(
                 setInterval(updateText, 3000);
                 
             </script>
-            <h2><?php echo esc_html($hero_subtitle); ?></h2>
+            <h3><?php echo esc_html($hero_subtitle); ?></h3>
             <div>
                 <?php
                 if (has_nav_menu('hero-buttons')) {
@@ -96,10 +96,10 @@ $hero_text_array = json_decode(
                 ?>
             </div>
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" id="hero-down-button" class="hero-down bi bi-chevron-compact-down" viewBox="0 0 16 16">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" id="hero-down-button" class="hero-down bi bi-chevron-compact-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
                 d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67" />
-        </svg>
+        </svg> -->
     </div>
 </section>
 

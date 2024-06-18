@@ -1,0 +1,46 @@
+:root {
+    --pri-col: #0a3e6a;
+    --sec-col: #1d70b7;
+    --light-col: #eeeeee;
+    --dark-col: #333333;
+  }
+  
+  /* Ensure these styles are applied to the button link inside Gutenberg blocks */
+  .wp-block-button__link,
+  .wp-block-button__link.is-style-custom-button-style,
+  .editor-styles-wrapper .wp-block-button__link {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    background-color: var(--sec-col); /* Button background color */
+    color: white; /* Button text color */
+    text-transform: none;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center align text */
+    display: inline-block; /* Ensure the button has proper block display */
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .wp-block-button__link:hover,
+  .wp-block-button__link.is-style-custom-button-style:hover,
+  .editor-styles-wrapper .wp-block-button__link:hover {
+    background-color: var(--pri-col); /* Darker shade on hover */
+    transform: scale(1.03); /* Slightly larger on hover */
+  }
+  
+  .wp-block-button__link:active,
+  .wp-block-button__link.is-style-custom-button-style:active,
+  .editor-styles-wrapper .wp-block-button__link:active {
+    background-color: #004080; /* Even darker shade when clicked */
+    transform: scale(1); /* Reset size when clicked */
+  }
+  
+  /* Ensure the button wrapper (optional, if you need specific styles for the wrapper) */
+  .wp-block-button,
+  .editor-styles-wrapper .wp-block-button {
+    display: flex;
+    justify-content: center; /* Center align buttons in their container */
+  }
+  

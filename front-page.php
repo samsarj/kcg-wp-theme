@@ -75,8 +75,8 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
                         'theme_location' => 'hero-buttons',
                         'container' => false,
                         'menu_class' => 'hero-button-row',
-                        'link_before' => '<button>',
-                        'link_after' => '</button>',
+                        'link_before' => '<span class="wp-block-button__link">',
+                        'link_after' => '</span>',
                         'fallback_cb' => false,
                     )
                 );
@@ -84,6 +84,12 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
             ?>
         </div>
     </div>
+    <svg class="divider" viewBox="0 0 100 100" preserveAspectRatio="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <polygon class="divider-light" points="100,95 0,45 0,100 100,100" fill="red" />
+    <polygon class="divider-primary" points="0,80 100,30 100,100 0,100" fill="green" />
+    <polygon class="divider-secondary" points="0,100 100,50 100,100 0,100" fill="blue" />
+</svg>
 </section>
 
 <section id="main-content" class="main-content">

@@ -13,8 +13,16 @@
 
 body {
   margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
   /* font-family: 'Open Sans', sans-serif; */
-  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  text-align: center;
+}
+
+a {
+  /* color: inherit; */
+  text-decoration: none;
 }
 
 body.dark-mode {
@@ -63,22 +71,24 @@ h6 {
 
 h1 {
   /* font-size: 36px; */
-  font-size: calc(24px + 1vw);
+  font-size: calc(36px + 0.2vw);
+  margin-top: 0;
 }
 
 h2 {
   /* font-size: 30px; */
-  font-size: calc(18px + 1vw);
+  font-size: calc(24px + 0.2vw);
 }
 
 h3 {
   /* font-size: 24px; */
-  font-size: calc(12px + 1vw);
+  font-size: calc(16px + 0.2vw);
 }
 
-h4, button {
+h4,
+button {
   /* font-size: 18px; */
-  font-size: calc(12px + 0.5vw);
+  font-size: calc(12px + 0.2vw);
 }
 
 /* Navbar Styling */
@@ -130,13 +140,13 @@ h4, button {
 }
 
 .logo {
-  height: 15vh
+  height: 15vh;
+  /* z-index: 99999; */
 }
 
 .menu-item {
   font-family: "Quicksand", sans-serif;
   font-weight: bold;
-  text-align: center;
   padding: 0 6px;
 }
 
@@ -187,7 +197,6 @@ h4, button {
 }
 
 .nav-menu li ul li {
-  text-align: center;
   text-transform: none;
   padding: 10px 4px;
 }
@@ -220,7 +229,6 @@ h4, button {
 
 .mobile-nav-menu {
   display: none;
-  /* list-style: none; */
   padding: 0;
   margin: 0;
 }
@@ -253,9 +261,11 @@ h4, button {
 
 @media (max-width: 1024px) {
   .nav-menu {
-    display: none; /* Hide desktop menu */
+    display: none;
   }
-  .mobile-menu-toggle, .mobile-menu, .mobile-nav-menu {
+  .mobile-menu-toggle,
+  .mobile-menu,
+  .mobile-nav-menu {
     display: block;
   }
   .nav-menu-left-container {
@@ -289,28 +299,27 @@ h4, button {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-image: linear-gradient(#eeeeeeb3 90%, var(--light-col)); */
-  background-color: #eeeeeeb3;
+  background-color: #eeeeeeaa;
   z-index: 0;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  /* width: 100%; */
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* gap: px; */
-  text-align: center;
   font-weight: bold;
-  margin: 0px 10vw;
+  box-sizing: border-box;
+  padding: 0px 20px;
+  margin: auto;
+  max-width: 800px;
 }
 
 .text-line {
-  text-align: center;
   text-transform: uppercase;
   font-weight: bold;
   line-height: 0.5;
@@ -320,22 +329,16 @@ h4, button {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.hero-button-row button {
-  margin: 0 6px;
-}
-
 @media (max-width: 768px) {
   .hero-button-row {
-    /* display: flex; */
     flex-direction: column;
-  }
-  .hero-button-row button {
-    margin: 6px 0;
+    /* gap: 6px; */
   }
 }
 .divider {
@@ -361,62 +364,242 @@ h4, button {
   filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0 5px);
 }
 
-.home-description {
-  margin: 0;
+.grid-container {
+  display: grid;
+  gap: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ) !important; /* 1x4 layout for desktop */
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .grid-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ) !important; /* 2x2 layout for tablets and smaller screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* hide the description!! */
+  .grid-item .description {
+    display: none;
+  }
+  .grid-item .title h2 {
+    text-align: center;
+  }
+}
+
+.grid-item,
+.wp-block-cover {
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  aspect-ratio: 16/9 !important;
+}
+
+.grid-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.grid-item .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Change the overlay color and opacity here */
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
+.grid-item .content {
+  /* position: absolute; */
+  /* top: 0%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  color: #fff;
+  z-index: 1;
+  padding: 10%;
+}
+
+.grid-item .title {
+  z-index: inherit;
+  /* margin-bottom: 10px; */
+}
+
+.grid-item .title h2 {
   color: white;
+  margin: 0;
+  text-align: start;
+}
+
+.grid-item .description {
+  text-align: start;
+  z-index: inherit;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* All Page Descriptions */
+
+.home-description-container,
+.full-width-header .header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.home-description-container {
   background-color: var(--sec-col);
-  text-align: center;
-  font-size: 24px;
-  border: none;
-  padding: 10vh 15vw;
 }
 
-/* Container for the scrolling area */
-.elvanto-calendar-events {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 20px; /* Set the gap between the cards */
-  padding: 10px;
+.home-description,
+.header-content {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  padding: 5vh 20px;
+  margin: auto;
+  max-width: 600px;
+  font-size: larger;
+  width: 100%;
+  color: white;
+  /* height: 100%; */
 }
 
-/* Each card */
-.elvanto-calendar-events-ul {
+/* Page Header */
+
+.page-container {
+  /* This is the logo height + the nav bar's padding */
+  padding-top: 17vh;
+}
+
+.page-content {
+  max-width: 800px;
+  padding: 0 20px;
+  margin: auto;
+}
+
+.full-width-header {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.full-width-header .image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.full-width-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.full-width-header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8; /* Fixed opacity for transparency */
+}
+
+.full-width-header .header-content h1 {
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin-top: 0;
+}
+
+.footer {
+  background-color: var(--pri-col);
+  color: white;
+  padding: 20px 0;
+}
+
+.footer-menu {
   display: flex;
+  justify-content: center;
+}
+
+.footer-menu-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu-items li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.footer-menu-items li a {
+  color: white;
+}
+
+.footer-menu-items li ul {
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
-  list-style: none;
+}
+
+.footer-menu-items li ul a {
+  font-weight: 200;
+}
+
+.logos {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
-.elvanto-calendar-events-ul li a {
-  scroll-snap-align: start;
-  border-radius: 20px;
-  width: 30vw;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.logos img {
+  height: 40px;
 }
 
-.elvanto-calendar-events-pic {
-  width: 30px; /* Set width of the image */
-  height: 30px; /* Set height of the image */
-  margin-bottom: 15px; /* Space between the image and title */
+.copyright {
+  /* margin-top: 20px; */
 }
-
-.elvanto-calendar-events-title {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 10px 0; /* Space above and below the title */
-}
-
-.elvanto-calendar-events-date {
-  font-size: 1em;
-  color: #666;
-  margin: 10px 0; /* Space above and below the date */
-}
-
-

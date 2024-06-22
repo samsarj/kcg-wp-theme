@@ -10,99 +10,125 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
 ?>
 
 <section class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="<?php echo esc_url($hero_bg_video); ?>" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1><?php echo esc_html($hero_title); ?></h1>
-        <div class="tagline">
-            <h2 id="line1" class="text-line" style="color: var(--sec-col);">Building</h2>
-            <h2 id="line2" class="text-line" style="color: var(--pri-col);">God's</h2>
-            <h2 id="line3" class="text-line" style="color: var(--sec-col);">church</h2>
-        </div>
-        <script>
-            const texts = [["Building", "God's", "church"], ["with", "God's", "word"], ["for", "God's", "glory"]];
-
-            let currentSet = 0;
-            const line1 = document.getElementById('line1');
-            const line2 = document.getElementById('line2');
-            const line3 = document.getElementById('line3');
-
-            function animateText(line, newText) {
-                gsap.to(line, {
-                    opacity: 0,
-                    scale: 0.5,
-                    rotationX: 180,
-                    duration: 0.5,
-                    onComplete: () => {
-                        line.textContent = newText;
-                        gsap.to(line, {
-                            opacity: 1,
-                            scale: 1,
-                            rotationX: 0,
-                            duration: 0.5
-                        });
-                    }
-                });
-            }
-
-            function updateText() {
-                const nextSet = (currentSet + 1) % texts.length;
-
-                if (texts[currentSet][0] !== texts[nextSet][0]) {
-                    animateText(line1, texts[nextSet][0]);
-                }
-                if (texts[currentSet][1] !== texts[nextSet][1]) {
-                    animateText(line2, texts[nextSet][1]);
-                }
-                if (texts[currentSet][2] !== texts[nextSet][2]) {
-                    animateText(line3, texts[nextSet][2]);
-                }
-
-                currentSet = nextSet;
-            }
-
-            setInterval(updateText, 3000);
-        </script>
-        <h3><?php echo esc_html($hero_subtitle); ?></h3>
-        <div>
-            <?php
-            if (has_nav_menu('hero-buttons')) {
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'hero-buttons',
-                        'container' => false,
-                        'menu_class' => 'hero-button-row',
-                        'link_before' => '<span class="wp-block-button__link">',
-                        'link_after' => '</span>',
-                        'fallback_cb' => false,
-                    )
-                );
-            }
-            ?>
-        </div>
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="<?php echo get_field('hero_background_video'); ?>" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1><?php echo get_field('hero_title') ?></h1>
+    <?php echo get_field('hero_tagline'); ?>
+    <?php echo get_field('hero_subtitle'); ?>
+    <div>
+      <?php
+      if (has_nav_menu('hero-buttons')) {
+        wp_nav_menu(
+          array(
+            'theme_location' => 'hero-buttons',
+            'container' => false,
+            'menu_class' => 'hero-button-row',
+            'link_before' => '<span class="wp-block-button__link">',
+            'link_after' => '</span>',
+            'fallback_cb' => false,
+          )
+        );
+      }
+      ?>
     </div>
-    <svg class="divider" viewBox="0 0 100 100" preserveAspectRatio="none"
-    xmlns="http://www.w3.org/2000/svg">
-    <polygon class="divider-light" points="100,95 0,45 0,100 100,100" fill="red" />
-    <polygon class="divider-primary" points="0,80 100,30 100,100 0,100" fill="green" />
-    <polygon class="divider-secondary" points="0,100 100,50 100,100 0,100" fill="blue" />
+  </div>
+</section>
+<svg class="divider" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon class="divider-light" points="100,95 0,45 0,100 100,100" fill="red" />
+  <polygon class="divider-primary" points="0,80 100,30 100,100 0,100" fill="green" />
+  <polygon class="divider-secondary" points="0,100 100,50 100,100 0,100" fill="blue" />
 </svg>
+<section>
+  <div class="home-description-container">
+    <div class="home-description">
+      <?php echo get_field('home_description'); ?>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="grid-container">
+    <div class="grid-item">
+        <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
+        <div class="overlay" href="#"></div>
+        <div class="content">
+          <div class="title">
+            <h2>Title 1</h2>
+          </div>
+          <div class="description">Description 1</div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="title">
+        <h2>Title 1</h2>
+      </div>
+      <div class="description">Description 1</div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="title">
+        <h2>Title 1</h2>
+      </div>
+      <div class="description">Description 1</div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="title">
+        <h2>Title 1</h2>
+      </div>
+      <div class="description">Description 1</div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="title">
+        <h2>Title 1</h2>
+      </div>
+      <div class="description">Description 1</div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
+    <div class="overlay"></div>
+    <div class="content">
+      <div class="title">
+        <h2>Title 1</h2>
+      </div>
+      <div class="description">Description 1</div>
+    </div>
+  </div>
+  </div>
+</section>
+<section>
+  <h2><?php echo get_field('coming_up_title') ?></h2>
+  <?php echo get_field('coming_up_code') ?>
 </section>
 
 <section id="main-content" class="main-content">
-    <div class="container">
-        <?php
-        if (have_posts()) {
-            while (have_posts()) {
-                the_post();
-                the_content();
-            }
-        }
-        ?>
-    </div>
+  <div class="container">
+    <?php
+    if (have_posts()) {
+      while (have_posts()) {
+        the_post();
+        the_content();
+      }
+    }
+    ?>
+  </div>
 </section>
 
 <?php

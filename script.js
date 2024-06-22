@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
       renderer: "svg",
       loop: false,
       autoplay: false,
-      path: "wp-content/themes/kcg/assets/images/mobile-toggle.json", // Path to the animation JSON
+      path: themeVars.themeDirectory + "/assets/images/mobile-toggle.json", // Path to the animation JSON
     });
   }
 
@@ -38,22 +38,28 @@ jQuery(document).ready(function ($) {
     toggleMobileMenu();
   });
 
-  // Other existing code...
   function loadAnimation(theme, container) {
-    const animationPath =
-      theme === "light"
-        ? "wp-content/themes/kcg/assets/images/logo_kcg.json"
-        : "wp-content/themes/kcg/assets/images/logo_kcg_light.json";
+    // Construct the animation path based on the current theme
+    let animationPath;
+    if (theme === "light") {
+        animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg.json";
+    } else {
+        animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg_light.json";
+    }
 
+    // Load the animation using Lottie
     const animationInstance = lottie.loadAnimation({
-      container: container,
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: animationPath,
+        container: container,
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: animationPath,
     });
+
     animation = animationInstance;
-  }
+}
+
+  
 
   function setTheme(theme) {
     const icon = $("#theme-icon");
@@ -147,4 +153,10 @@ jQuery(document).ready(function ($) {
     $(this).toggleClass("open");
     $(this).text($(this).hasClass("open") ? "−" : "+");
   });
+
+  // Adjust padding on mobile menu toggle
+  $("#mobile-menu-toggle").click(function () {
+    setTimeout(adjustContentPadding, 1500); // Wait for the mobile menu to toggle
+  });
+
 });

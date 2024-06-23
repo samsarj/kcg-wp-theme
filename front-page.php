@@ -37,11 +37,13 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
     </div>
   </div>
 </section>
+
 <svg class="divider" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
   <polygon class="divider-light" points="100,95 0,45 0,100 100,100" fill="red" />
   <polygon class="divider-primary" points="0,80 100,30 100,100 0,100" fill="green" />
   <polygon class="divider-secondary" points="0,100 100,50 100,100 0,100" fill="blue" />
 </svg>
+
 <section>
   <div class="home-description-container">
     <div class="home-description">
@@ -49,70 +51,31 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
     </div>
   </div>
 </section>
+
 <section>
   <div class="grid-container">
-    <div class="grid-item">
-        <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
-        <div class="overlay" href="#"></div>
+    <?php for ($i = 1; $i <= 6; $i++):
+      $image = get_field('grid_item_' . $i . '_image');
+      $title = get_field('grid_item_' . $i . '_title');
+      $description = get_field('grid_item_' . $i . '_description');
+      $link = get_field('grid_item_' . $i . '_link');
+      ?>
+      <a href="<?php echo esc_url($link); ?>" class="grid-item">
+        <?php if (!empty($image)): ?>
+          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+          <?php endif; ?>
+        <div class="overlay"></div>
         <div class="content">
           <div class="title">
-            <h2>Title 1</h2>
+            <h2><?php echo esc_html($title); ?></h2>
           </div>
-          <div class="description">Description 1</div>
-    </div>
-  </div>
-  <div class="grid-item">
-    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="title">
-        <h2>Title 1</h2>
-      </div>
-      <div class="description">Description 1</div>
-    </div>
-  </div>
-  <div class="grid-item">
-    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="title">
-        <h2>Title 1</h2>
-      </div>
-      <div class="description">Description 1</div>
-    </div>
-  </div>
-  <div class="grid-item">
-    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="title">
-        <h2>Title 1</h2>
-      </div>
-      <div class="description">Description 1</div>
-    </div>
-  </div>
-  <div class="grid-item">
-    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="title">
-        <h2>Title 1</h2>
-      </div>
-      <div class="description">Description 1</div>
-    </div>
-  </div>
-  <div class="grid-item">
-    <img src="wp-content/themes/kcg/assets/images/KCG_PUBLICITY_240324_JBM-15.jpg" alt="Image 1">
-    <div class="overlay"></div>
-    <div class="content">
-      <div class="title">
-        <h2>Title 1</h2>
-      </div>
-      <div class="description">Description 1</div>
-    </div>
-  </div>
+          <div class="description"><?php echo esc_html($description); ?></div>
+        </div>
+      </a>
+    <?php endfor; ?>
   </div>
 </section>
+
 <section>
   <h2><?php echo get_field('coming_up_title') ?></h2>
   <?php echo get_field('coming_up_code') ?>

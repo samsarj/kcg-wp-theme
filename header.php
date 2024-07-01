@@ -39,6 +39,15 @@
                         )
                     );
                     ?>
+                    <?php
+                    wp_nav_menu(
+                        array(
+                            'theme_location' => 'mobile-socials',
+                            'container' => false,
+                            'menu_class' => 'nav-socials',
+                        )
+                    );
+                    ?>
                 </div>
             </div>
             <div class="mobile-menu" id="mobile-menu">

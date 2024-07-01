@@ -1,45 +1,38 @@
+/*
+Theme Name: King's Church Guildford
+Author: Sam Sarjudeen
+Author URI: https://sarj.uk/
+Description: The Wordpress theme built for King's Church Guildford
+Tags:
+Version: 0.8
+Requires at least: 6.5
+Tested up to: 6.5
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
 :root {
   --pri-col: #0a3e6a;
   --sec-col: #1d70b7;
   --light-col: #eeeeee;
   --dark-col: #333333;
-
-  --dark-bg: #121212;
-  --dark-text: #e0e0e0;
-  --dark-navbar: #1f1f1f;
-  --dark-navlink: #b0b0b0;
-  --dark-hover: #ffffff;
 }
 
 body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: Helvetica, sans-serif; */
   /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
   /* font-family: 'Open Sans', sans-serif; */
   /* font-family: Arial, Helvetica, sans-serif; */
   text-align: center;
+  font-size: large;
+  background-color: var(--light-col);
 }
 
 a {
-  /* color: inherit; */
+  color: inherit;
   text-decoration: none;
-}
-
-body.dark-mode {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-body.dark-mode .navbar {
-  background-color: var(--dark-navbar) !important;
-}
-
-body.dark-mode .nav-menu .nav-link {
-  color: var(--dark-navlink);
-}
-
-body.dark-mode .nav-link:hover {
-  color: var(--dark-hover);
 }
 
 /* Apply Quicksand font to all headings */
@@ -77,18 +70,18 @@ h1 {
 
 h2 {
   /* font-size: 30px; */
-  font-size: calc(24px + 0.2vw);
+  font-size: calc(30px + 0.2vw);
 }
 
 h3 {
   /* font-size: 24px; */
-  font-size: calc(16px + 0.2vw);
+  font-size: calc(24px + 0.2vw);
 }
 
 h4,
 button {
   /* font-size: 18px; */
-  font-size: calc(12px + 0.2vw);
+  font-size: calc(18px + 0.2vw);
 }
 
 /* Navbar Styling */
@@ -141,7 +134,6 @@ button {
 
 .logo {
   height: 15vh;
-  /* z-index: 99999; */
 }
 
 .menu-item {
@@ -193,7 +185,8 @@ button {
   width: 200%;
   background-color: #fff;
   opacity: 0;
-  transition: opacity 0.3s; /* Add transitions */
+  transition: opacity 0.3s;
+  /* Add transitions */
 }
 
 .nav-menu li ul li {
@@ -207,6 +200,14 @@ button {
 
 .nav-menu li:hover ul {
   opacity: 1;
+}
+
+.nav-socials {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin: 0;
 }
 
 /* Mobile Menu Toggle Styling */
@@ -263,14 +264,24 @@ button {
   .nav-menu {
     display: none;
   }
+
   .mobile-menu-toggle,
-  .mobile-menu,
   .mobile-nav-menu {
     display: block;
   }
+
+  .nav-socials {
+    font-size: 3vh;
+  }
+
   .nav-menu-left-container {
     justify-content: flex-start;
     padding: 0 0 0 4vw;
+  }
+
+  .nav-menu-right-container {
+    justify-content: flex-end;
+    padding: 0 4vw 0 0;
   }
 }
 
@@ -280,6 +291,7 @@ button {
   position: relative;
   width: 100%;
   height: 100vh;
+  height: 100svh;
   overflow: hidden;
 }
 
@@ -314,15 +326,22 @@ button {
   flex-direction: column;
   font-weight: bold;
   box-sizing: border-box;
+  gap: 5vh;
   padding: 0px 20px;
   margin: auto;
   max-width: 800px;
 }
 
+.hero-content>* {
+  margin: 0;
+}
+
+.tagline>* {
+  margin: 0;
+}
+
 .text-line {
   text-transform: uppercase;
-  font-weight: bold;
-  line-height: 0.5;
 }
 
 .hero-button-row {
@@ -338,16 +357,17 @@ button {
 @media (max-width: 768px) {
   .hero-button-row {
     flex-direction: column;
-    /* gap: 6px; */
   }
 }
+
+/* DIVIDER */
+
 .divider {
   display: flex;
   width: 100%;
   height: 15vh;
   position: absolute;
-  /* z-index: 10000; */
-  bottom: 0%;
+  bottom: -1px;
 }
 
 .divider-primary {
@@ -357,12 +377,16 @@ button {
 .divider-secondary {
   fill: #1d70b7;
 }
+
 .divider-light {
   fill: #a6bfd1;
 }
+
 .divider polygon {
   filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0 5px);
 }
+
+/* GRID */
 
 .grid-container {
   display: grid;
@@ -371,38 +395,34 @@ button {
 
 @media screen and (min-width: 1024px) {
   .grid-container {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ) !important; /* 1x4 layout for desktop */
+    grid-template-columns: repeat(3,
+        1fr) !important;
   }
 }
 
 @media screen and (max-width: 1023px) {
   .grid-container {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ) !important; /* 2x2 layout for tablets and smaller screens */
+    grid-template-columns: repeat(2,
+        1fr) !important;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* hide the description!! */
   .grid-item .description {
     display: none;
   }
+
   .grid-item .title h2 {
-    text-align: center;
+    text-align: center !important;
+    font-size: large;
   }
 }
 
-.grid-item,
-.wp-block-cover {
-  position: relative !important;
-  overflow: hidden !important;
-  width: 100% !important;
-  aspect-ratio: 16/9 !important;
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16/9;
 }
 
 .grid-item img {
@@ -423,7 +443,6 @@ button {
   height: 100%;
   z-index: 0;
   background-color: black;
-  /* background-color: var(--pri-col); */
   opacity: 0.6;
   transition: opacity 0.3s ease;
 }
@@ -476,6 +495,7 @@ button {
   justify-content: center;
   align-items: center;
   height: 100%;
+  /* margin: 0; */
 }
 
 .home-description-container {
@@ -489,9 +509,14 @@ button {
   box-sizing: border-box;
   margin: auto;
   max-width: 600px;
-  font-size: larger;
+  font-size: x-large;
   width: 100%;
   color: white;
+}
+
+.home-description a,
+.header-content a {
+  color: var(--light-col);
 }
 
 .home-description {
@@ -507,12 +532,15 @@ button {
 .page-container {
   /* This is the logo height + the nav bar's padding */
   padding-top: 17vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-content {
-  max-width: 1024px;
+  max-width: 800px;
   padding: 0 20px;
-  margin: auto;
+  margin: 0 auto;
+  background-color: white;
 }
 
 .full-width-header {
@@ -543,7 +571,8 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.8; /* Fixed opacity for transparency */
+  opacity: 0.8;
+  /* Fixed opacity for transparency */
 }
 
 .full-width-header .header-content h1 {
@@ -603,5 +632,6 @@ button {
 }
 
 .copyright {
-  /* margin-top: 20px; */
+  margin-top: 20px;
+  font-size: x-small;
 }

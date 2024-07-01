@@ -1,7 +1,8 @@
 <?php
 function kcg_enqueue_scripts()
 {
-    wp_enqueue_style('theme-style', get_stylesheet_uri());
+    $theme_data = wp_get_theme();
+    wp_enqueue_style('theme-style', get_stylesheet_uri(), $theme_data['version']);
 
     wp_enqueue_style(
         'kcg-button-styles',
@@ -27,7 +28,7 @@ function kcg_enqueue_scripts()
     wp_enqueue_style('custom-elvanto-css', get_template_directory_uri() . '/assets/css/elvanto-swiper.css', array(), null);
     wp_enqueue_script('custom-elvanto-js', get_template_directory_uri() . '/assets/js/elvanto-swiper.js', array(), null, true);
 
-    wp_enqueue_script( 'customizer-drag-drop', get_template_directory_uri() . '/assets/js/customizer-drag-drop.js', array( 'jquery', 'jquery-ui-sortable' ), '', true );
+    // wp_enqueue_script('customizer-drag-drop', get_template_directory_uri() . '/assets/js/customizer-drag-drop.js', array('jquery', 'jquery-ui-sortable'), '', true);
 
     // Localize script with PHP variables
     $theme_vars = array(
@@ -45,6 +46,7 @@ function kcg_menus()
         array(
             'left-menu' => __('Left Menu', 'kcg'),
             'right-menu' => __('Right Menu', 'kcg'),
+            'mobile-socials' => __('Mobile Social Icons', 'kcg'),
             'hero-buttons' => __('Hero Buttons Menu', 'kcg'),
             'footer_menu' => __('Footer Menu', 'theme'),
         )
@@ -59,7 +61,8 @@ function kcg_customize_register($wp_customize)
     $wp_customize->add_section('footer', array(
         'title' => __('Footer', 'kcg'),
         'priority' => 30,
-    ));
+    )
+    );
 
     // Church logo setting
     $wp_customize->add_setting('church_logo');
@@ -67,7 +70,29 @@ function kcg_customize_register($wp_customize)
         'label' => __('Church Logo', 'kcg'),
         'section' => 'footer',
         'settings' => 'church_logo',
-    )));
+    )
+    ));
+
+    // Setting for church logo link
+    $wp_customize->add_setting(
+        'church_logo_link',
+        array(
+            'default' => __('/', 'link'),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport' => 'refresh',
+        )
+    );
+
+    // Control for church logo link
+    $wp_customize->add_control(
+        'church_logo_link',
+        array(
+            'type' => 'text',
+            'priority' => 10,
+            'section' => 'footer',
+            'label' => 'Church Logo Link',
+        )
+    );
 
     // Affiliation logo setting
     $wp_customize->add_setting('affiliation_logo');
@@ -75,35 +100,59 @@ function kcg_customize_register($wp_customize)
         'label' => __('Affiliation Logo', 'kcg'),
         'section' => 'footer',
         'settings' => 'affiliation_logo',
-    )));
+    )
+    ));
+
+    // Setting for church logo link
+    $wp_customize->add_setting(
+        'affiliation_logo_link',
+        array(
+            'default' => __('www.google.com', 'link'),
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport' => 'refresh',
+        )
+    );
+
+    // Control for church logo link
+    $wp_customize->add_control(
+        'affiliation_logo_link',
+        array(
+            'type' => 'text',
+            'priority' => 10,
+            'section' => 'footer',
+            'label' => 'Affiliation Logo Link',
+        )
+    );
 }
 add_action('customize_register', 'kcg_customize_register');
 
 
 function kcg_setup()
 {
-    add_theme_support('editor-color-palette', array(
+    add_theme_support(
+        'editor-color-palette',
         array(
-            'name' => __('Primary', 'themeLangDomain'),
-            'slug' => 'primary',
-            'color' => '#0a3e6a',
-        ),
-        array(
-            'name' => __('Secondary', 'themeLangDomain'),
-            'slug' => 'secondary',
-            'color' => '#1d70b7',
-        ),
-        array(
-            'name' => __('Light', 'themeLangDomain'),
-            'slug' => 'light',
-            'color' => '#eeeeee',
-        ),
-        array(
-            'name' => __('Dark', 'themeLangDomain'),
-            'slug' => 'dark',
-            'color' => '#333333',
-        ),
-    )
+            array(
+                'name' => __('Primary', 'themeLangDomain'),
+                'slug' => 'primary',
+                'color' => '#0a3e6a',
+            ),
+            array(
+                'name' => __('Secondary', 'themeLangDomain'),
+                'slug' => 'secondary',
+                'color' => '#1d70b7',
+            ),
+            array(
+                'name' => __('Light', 'themeLangDomain'),
+                'slug' => 'light',
+                'color' => '#eeeeee',
+            ),
+            array(
+                'name' => __('Dark', 'themeLangDomain'),
+                'slug' => 'dark',
+                'color' => '#333333',
+            ),
+        )
     );
 }
 add_action('after_setup_theme', 'kcg_setup');

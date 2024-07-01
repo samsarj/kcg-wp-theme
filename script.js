@@ -2,8 +2,6 @@ jQuery(document).ready(function ($) {
   let isMobileMenuOpen = false;
   let mobileMenuAnimation;
 
-  $("#mobile-menu").hide();
-
   // Load the Lottie animation for the mobile menu toggle
   function loadMobileMenuAnimation() {
     mobileMenuAnimation = lottie.loadAnimation({

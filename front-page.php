@@ -39,9 +39,9 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
 </section>
 
 <svg class="divider" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-  <polygon class="divider-light" points="100,95 0,45 0,100 100,100" fill="red" />
-  <polygon class="divider-primary" points="0,80 100,30 100,100 0,100" fill="green" />
-  <polygon class="divider-secondary" points="0,100 100,50 100,100 0,100" fill="blue" />
+  <polygon class="divider-light" points="100,90 0,40 0,100 100,100" fill="red" />
+  <polygon class="divider-primary" points="0,75 100,25 100,100 0,100" fill="green" />
+  <polygon class="divider-secondary" points="0,95 100,45 100,100 0,100" fill="blue" />
 </svg>
 
 <section>

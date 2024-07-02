@@ -1,24 +1,27 @@
 <?php
-// Include the header
-get_header();
-?>
+/**
+ * Template Name: Front Page
+ */
 
-<?php
-$hero_bg_video = get_theme_mod('hero_background_video');
-$hero_title = get_theme_mod('hero_title', __('Default Title', 'kcg'));
-$hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
+get_header();
+
+// ACF fields
+$hero_bg_video = get_field('hero_background_video');
+$hero_title = get_field('hero_title');
+$hero_tagline = get_field('hero_tagline');
+$hero_subtitle = get_field('hero_subtitle');
 ?>
 
 <section class="hero">
   <video autoplay muted loop playsinline class="hero-video">
-    <source src="<?php echo get_field('hero_background_video'); ?>" type="video/mp4">
+    <source src="<?php echo esc_url($hero_bg_video['url']); ?>" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1><?php echo get_field('hero_title') ?></h1>
-    <?php echo get_field('hero_tagline'); ?>
-    <?php echo get_field('hero_subtitle'); ?>
+    <h1><?php echo esc_html($hero_title); ?></h1>
+    <div class="hero-tagline"><?php echo $hero_tagline ?></div>
+    <?php echo $hero_subtitle; ?>
     <div>
       <?php
       if (has_nav_menu('hero-buttons')) {
@@ -47,23 +50,23 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
 <section>
   <div class="home-description-container">
     <div class="home-description">
-      <?php echo get_field('home_description'); ?>
+      <?php the_field('home_description'); ?>
     </div>
   </div>
 </section>
 
 <section>
   <div class="grid-container">
-    <?php for ($i = 1; $i <= 6; $i++):
+    <?php for ($i = 1; $i <= 6; $i++) :
       $image = get_field('grid_item_' . $i . '_image');
       $title = get_field('grid_item_' . $i . '_title');
       $description = get_field('grid_item_' . $i . '_description');
       $link = get_field('grid_item_' . $i . '_link');
       ?>
       <a href="<?php echo esc_url($link); ?>" class="grid-item">
-        <?php if (!empty($image)): ?>
-          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
-          <?php endif; ?>
+        <?php if (!empty($image)) : ?>
+          <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+        <?php endif; ?>
         <div class="overlay"></div>
         <div class="content">
           <div class="title">
@@ -77,8 +80,8 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
 </section>
 
 <section>
-  <h2><?php echo get_field('coming_up_title') ?></h2>
-  <?php echo get_field('coming_up_code') ?>
+  <h2><?php the_field('coming_up_title'); ?></h2>
+  <?php the_field('coming_up_code'); ?>
 </section>
 
 <section id="main-content" class="main-content">
@@ -94,7 +97,4 @@ $hero_subtitle = get_theme_mod('hero_subtitle', __('Default Subtitle', 'kcg'));
   </div>
 </section>
 
-<?php
-// Include the footer
-get_footer();
-?>
+<?php get_footer(); ?>

@@ -4,11 +4,11 @@ get_header(); ?>
 <section class="page-container">
     <div class="full-width-header">
         <?php
-        $image_url = get_field('full_width_image');
+        $image = get_field('full_width_image');
         $overlay_colour = get_field('overlay_colour');
-        if ($image_url): ?>
+        if ($image): ?>
             <div class="image-wrapper">
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php the_title(); ?>">
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
             </div>
         <?php endif; ?>
 
@@ -23,7 +23,7 @@ get_header(); ?>
                 $page_desc = get_field('page_desc');
                 if ($page_desc): ?>
                     <div class="page-description">
-                        <?php echo $page_desc; ?>
+                        <?php echo esc_html($page_desc); ?>
                     </div>
                 <?php endif; ?>
             </div>
@@ -32,8 +32,7 @@ get_header(); ?>
 
     <div class="page-content">
         <?php
-        while (have_posts()):
-            the_post();
+        while (have_posts()): the_post();
             the_content();
         endwhile;
         ?>

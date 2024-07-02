@@ -177,4 +177,10 @@ function kcg_enqueue_block_editor_assets()
 }
 add_action('enqueue_block_editor_assets', 'kcg_enqueue_block_editor_assets');
 
+
+
+// Include ACF field groups
+require_once get_template_directory() . '/acf-field-groups.php';
+
+
 ?>

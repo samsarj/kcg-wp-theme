@@ -1,0 +1,234 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/theme.json",
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "defaultPalette": false,
+            "palette": [
+                {
+                    "name": "Primary",
+                    "slug": "primary",
+                    "color": "#0a3e6a"
+                },
+                {
+                    "name": "Secondary",
+                    "slug": "secondary",
+                    "color": "#1d70b7"
+                },
+                {
+                    "name": "Accent 1",
+                    "slug": "accent-1",
+                    "color": "#a6bfd1"
+                },
+                
+                {
+                    "name": "Accent 2",
+                    "slug": "accent-2",
+                    "color": "#a6bfd1"
+                },
+                {
+                    "name": "Accent 3",
+                    "slug": "accent-3",
+                    "color": "#a6bfd1"
+                },
+                {
+                    "name": "Light",
+                    "slug": "light",
+                    "color": "#eeeeee"
+                },
+                {
+                    "name": "Dark",
+                    "slug": "dark",
+                    "color": "#333333"
+                },
+                {
+                    "name": "Creche 1",
+                    "slug": "creche-1",
+                    "color": "#CE168D"
+                  },
+                  {
+                    "name": "Explorers 1",
+                    "slug": "explorers-1",
+                    "color": "#ED3427"
+                  },
+                  {
+                    "name": "Explorers 2",
+                    "slug": "explorers-2",
+                    "color": "#F48C25"
+                  },
+                  {
+                    "name": "Explorers 3",
+                    "slug": "explorers-3",
+                    "color": "#FBD313"
+                  },
+                  {
+                    "name": "Rooted 1",
+                    "slug": "rooted-1",
+                    "color": "#0B6D3B"
+                  },
+                  {
+                    "name": "Rooted 2",
+                    "slug": "rooted-2",
+                    "color": "#2FAC90"
+                  },
+                  {
+                    "name": "Rooted 3",
+                    "slug": "rooted-3",
+                    "color": "#89C444"
+                },
+                {
+                    "name": "Equip 1",
+                    "slug": "equip-1",
+                    "color": "#2F2560"
+                  },
+                  {
+                    "name": "Equip 2",
+                    "slug": "equip-2",
+                    "color": "#82225E"
+                  },
+                  {
+                    "name": "Equip 3",
+                    "slug": "equip-3",
+                    "color": "#CD1F5D"
+                  }
+            ]
+        },
+        "typography": {
+            "fluid": true,
+            "fontFamilies": [
+                {
+                    "name": "Headings",
+                    "slug": "headings",
+                    "fontFamily": "'Quicksand', sans-serif;"
+                },
+                {
+                    "name": "Body",
+                    "slug": "body",
+                    "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+                }
+            ]
+        },
+        "spacing": {
+            "blockGap": null
+        }
+    },
+    "styles": {
+        "typography": {
+            "fontFamily": "var:preset|font-family|body",
+            "fontSize": "18px"
+        },
+        "color": {
+            "text": "var:preset|color|dark",
+            "background": "var:preset|color|light"
+        },
+        "blocks": {
+            "core/button": {
+                "variations": {
+                    "outline": {
+                        "color": {
+                            "background": "transparent",
+                            "text": "var:preset|color|secondary"
+                        },
+                        "border": {
+                            "color": "var:preset|color|secondary",
+                            "style": "solid",
+                            "width": "3px"
+                        }
+                    },
+                    "fill": {
+                        "color": {
+                            "background": "var:preset|color|secondary",
+                            "text": "var:preset|color|light"
+                        }
+                    }
+                }
+            }
+        },
+        "elements": {
+            "heading": {
+                "typography": {
+                    "fontFamily": "var:preset|font-family|headings"
+                },
+                "color": {
+                    "text": "var:preset|color|secondary"
+                }
+            },
+            "h1": {
+                "typography": {
+                    "fontSize": "2.8rem"
+                },
+                "color": {
+                    "text": "var:preset|color|secondary"
+                }
+            },
+            "h2": {
+                "typography": {
+                    "fontSize": "2.2rem"
+                }
+            },
+            "h3": {
+                "typography": {
+                    "fontSize": "2rem"
+                },
+                "color": {
+                    "text": "var:preset|color|primary"
+                }
+            },
+            "h4": {
+                "typography": {
+                    "fontSize": "1.8rem"
+                }
+            },
+            "h5": {
+                "typography": {
+                    "fontSize": "1.6rem"
+                }
+            },
+            "h6": {
+                "typography": {
+                    "fontSize": "1.4rem"
+                }
+            },
+            "link": {
+                "color": {
+                    "text": "inherit"
+                },
+                "typography": {
+                    "textDecoration": "none"
+                }
+            },
+            "button": {
+                "typography": {
+                    "fontFamily": "var:preset|font-family|headings",
+                    "fontWeight": "600"
+                },
+                "css": "transition: background-color 0.3s;",
+                "border": {
+                    "radius": "5px"
+                },
+                "color": {
+                    "background": "var:preset|color|secondary",
+                    "text": "white"
+                },
+                ":hover": {
+                    "color": {
+                        "background": "var:preset|color|primary"
+                    }
+                }
+            }
+        }
+    },
+    "templateParts": [
+		{
+			"area": "header",
+			"name": "header",
+			"title": "Header"
+		},
+		{
+			"area": "footer",
+			"name": "footer",
+			"title": "Footer"
+		}
+	]
+}

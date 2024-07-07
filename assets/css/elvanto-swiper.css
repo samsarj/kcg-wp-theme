@@ -52,6 +52,20 @@
   margin: 0;
 }
 
+.elvanto-calendar-events-title {
+  font-size: unset !important;
+}
+
+
+
+
+
+
+
+
+
+
+
 .elvanto-modal-bg {
     position: fixed !important;
 }

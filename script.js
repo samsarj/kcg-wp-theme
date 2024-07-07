@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
   let isMobileMenuOpen = false;
   let mobileMenuAnimation;
+  let animation;
 
   // Load the Lottie animation for the mobile menu toggle
   function loadMobileMenuAnimation() {
@@ -24,8 +25,6 @@ jQuery(document).ready(function ($) {
     } else {
       mobileMenuAnimation.playSegments([60, 0], true); // Play back to hamburger icon
     }
-
-    updateNavbarState();
   }
 
   // Load the mobile menu animation on document ready
@@ -38,59 +37,34 @@ jQuery(document).ready(function ($) {
 
   function loadAnimation(theme, container) {
     // Construct the animation path based on the current theme
-    let animationPath;
-    if (theme === "light") {
-        animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg.json";
-    } else {
-        animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg_light.json";
+    let animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg.json";
+    if (theme === "dark") {
+      animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg_light.json";
     }
 
     // Load the animation using Lottie
     const animationInstance = lottie.loadAnimation({
-        container: container,
-        renderer: "svg",
-        loop: false,
-        autoplay: false,
-        path: animationPath,
+      container: container,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: animationPath,
     });
 
     animation = animationInstance;
-}
-
-  
-
-  function setTheme(theme) {
-    const icon = $("#theme-icon");
-    const container = $("#logo")[0];
-
-    if (theme === "dark") {
-      $("body").addClass("dark-mode");
-      icon.removeClass("bi-sun").addClass("bi-moon");
-      loadAnimation("dark", container);
-    } else {
-      $("body").removeClass("dark-mode");
-      icon.removeClass("bi-moon").addClass("bi-sun");
-      loadAnimation("light", container);
-    }
-
-    localStorage.setItem("theme", theme);
   }
 
-  function toggleTheme() {
-    const currentTheme = $("body").hasClass("dark-mode") ? "dark" : "light";
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
+  const container = $("#logo")[0];
+  loadAnimation("light", container);
+
+  const isHomePage = $("body").hasClass("home");
+
+  if (isHomePage) {
+    $(".navbar").addClass("navbar-transparent");
   }
-
-  $(".toggle-dark-mode").on("click", function () {
-    toggleTheme();
-  });
-
-  const savedTheme = localStorage.getItem("theme") || "light";
-  setTheme(savedTheme);
 
   let lastScrollTop = 0;
-  const animationStartScroll = 50;
+  const animationStartScroll = 8 * window.innerHeight / 100;
   const logo = $("#logo");
   const animationDuration = 1.5;
   let animationPlayed = false;
@@ -99,21 +73,15 @@ jQuery(document).ready(function ($) {
     const scrollY = window.scrollY;
     const navbar = $(".navbar");
 
-    if (scrollY > animationStartScroll || isMobileMenuOpen) {
-      if (!navbar.hasClass("navbar-solid")) {
-        navbar.addClass("navbar-solid");
-      }
-    } else {
-      if (navbar.hasClass("navbar-solid")) {
-        navbar.removeClass("navbar-solid");
-      }
+    if (isHomePage && (scrollY > animationStartScroll || isMobileMenuOpen)) {
+      navbar.removeClass("navbar-transparent").addClass("navbar-solid");
+    } else if (isHomePage && scrollY <= animationStartScroll && !isMobileMenuOpen) {
+      navbar.removeClass("navbar-solid").addClass("navbar-transparent");
     }
   }
 
   function handleScroll() {
     const scrollY = window.scrollY;
-    const navbar = $(".navbar");
-    const scrollDirection = scrollY > lastScrollTop ? "down" : "up";
     lastScrollTop = scrollY;
 
     updateNavbarState();
@@ -156,5 +124,4 @@ jQuery(document).ready(function ($) {
   $("#mobile-menu-toggle").click(function () {
     setTimeout(adjustContentPadding, 1500); // Wait for the mobile menu to toggle
   });
-
 });

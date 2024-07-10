@@ -3,7 +3,6 @@
  * Title: Page Title Area
  * Slug: kcg/page-title-area
  * Block Types: core/post-content
- * Post Types: page, post,
  */
 ?>
 

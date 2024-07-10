@@ -1,7 +1,15 @@
 jQuery(document).ready(function ($) {
-  $(".elvanto-calendar-events-title").wrap("<h3></h3>");
 
-  $(".elvanto-calendar-events-date").wrap("<h4></h4>");
+
+  // $("#elvanto-events-9323").wrap('<div class="elvanto"></div>');
+
+  $(".elvanto-calendar-events-title").wrap("<h4></h4>");
+  $(".elvanto-calendar-events-title").each(function() {
+    var updatedText = $(this).html().replace(/\s*\|\s*/g, '<br>');
+    $(this).html(updatedText);
+  });
+
+  $(".elvanto-calendar-events-date").wrap("<h5></h5>");
 
   $("[data-elvanto-url]").on("click", function () {
     setTimeout(function () {

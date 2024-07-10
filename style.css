@@ -11,6 +11,14 @@ License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+@font-face {
+  font-family: 'Quicksand';
+  src: url('assets/fonts/Quicksand-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 700;
+  font-style: normal;
+}
+
+
 body {
   margin: 0;
 }
@@ -109,7 +117,7 @@ body {
 
 
 /* Dropdown Menu Styling */
-.nav-menu li {
+/* .nav-menu li {
   position: relative;
 }
 
@@ -125,7 +133,6 @@ body {
   background-color: #fff;
   opacity: 0;
   transition: opacity 0.3s;
-  /* Add transitions */
 }
 
 .nav-menu li ul li {
@@ -147,7 +154,7 @@ body {
   align-items: center;
   list-style: none;
   margin: 0;
-}
+} */
 
 /* Mobile Menu Toggle Styling */
 .mobile-menu-toggle {
@@ -242,11 +249,11 @@ body {
   gap: 5vh;
 }
 
-.hero-content > * {
+.hero-content>* {
   margin: 0;
 }
 
-.hero-animation > * {
+.hero-animation>* {
   margin: 0;
 }
 
@@ -293,4 +300,12 @@ body {
 
 .text-shadow {
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+a {
+  transition: all ease 0.3s;
+}
+
+a:hover {
+  transform: scale(1.02);
 }

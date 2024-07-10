@@ -199,11 +199,11 @@
                 }
             },
             "button": {
+                "css": "transition: background-color 0.3s !important;",
                 "typography": {
                     "fontFamily": "var:preset|font-family|headings",
                     "fontWeight": "600"
                 },
-                "css": "transition: background-color 0.3s;",
                 "border": {
                     "radius": "5px"
                 },

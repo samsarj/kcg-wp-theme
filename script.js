@@ -3,6 +3,11 @@ jQuery(document).ready(function ($) {
   let mobileMenuAnimation;
   let animation;
 
+  $("#logo").on("click", function () {
+    // Redirect to the homepage
+    window.location.href = "<?php echo esc_url(home_url(" / ")); ?>";
+  });
+
   // Load the Lottie animation for the mobile menu toggle
   function loadMobileMenuAnimation() {
     mobileMenuAnimation = lottie.loadAnimation({
@@ -25,6 +30,9 @@ jQuery(document).ready(function ($) {
     } else {
       mobileMenuAnimation.playSegments([60, 0], true); // Play back to hamburger icon
     }
+
+    // Update navbar state when the mobile menu is toggled
+    updateNavbarState();
   }
 
   // Load the mobile menu animation on document ready
@@ -37,9 +45,11 @@ jQuery(document).ready(function ($) {
 
   function loadAnimation(theme, container) {
     // Construct the animation path based on the current theme
-    let animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg.json";
+    let animationPath =
+      themeVars.themeDirectory + "/assets/images/logo_kcg.json";
     if (theme === "dark") {
-      animationPath = themeVars.themeDirectory + "/assets/images/logo_kcg_light.json";
+      animationPath =
+        themeVars.themeDirectory + "/assets/images/logo_kcg_light.json";
     }
 
     // Load the animation using Lottie
@@ -64,7 +74,7 @@ jQuery(document).ready(function ($) {
   }
 
   let lastScrollTop = 0;
-  const animationStartScroll = 8 * window.innerHeight / 100;
+  const animationStartScroll = (8 * window.innerHeight) / 100;
   const logo = $("#logo");
   const animationDuration = 1.5;
   let animationPlayed = false;
@@ -75,7 +85,11 @@ jQuery(document).ready(function ($) {
 
     if (isHomePage && (scrollY > animationStartScroll || isMobileMenuOpen)) {
       navbar.removeClass("navbar-transparent").addClass("navbar-solid");
-    } else if (isHomePage && scrollY <= animationStartScroll && !isMobileMenuOpen) {
+    } else if (
+      isHomePage &&
+      scrollY <= animationStartScroll &&
+      !isMobileMenuOpen
+    ) {
       navbar.removeClass("navbar-solid").addClass("navbar-transparent");
     }
   }
@@ -107,21 +121,4 @@ jQuery(document).ready(function ($) {
 
   $(window).on("scroll", handleScroll);
   handleScroll();
-
-  // Mobile submenu toggle
-  $(".mobile-nav-menu .menu-item-has-children").each(function () {
-    $(this).append('<span class="submenu-toggle">+</span>');
-  });
-
-  $(".mobile-nav-menu").on("click", ".submenu-toggle", function () {
-    const $submenu = $(this).siblings("ul");
-    $submenu.slideToggle(300);
-    $(this).toggleClass("open");
-    $(this).text($(this).hasClass("open") ? "−" : "+");
-  });
-
-  // Adjust padding on mobile menu toggle
-  $("#mobile-menu-toggle").click(function () {
-    setTimeout(adjustContentPadding, 1500); // Wait for the mobile menu to toggle
-  });
 });

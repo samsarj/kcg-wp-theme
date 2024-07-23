@@ -36,25 +36,6 @@ function theme_prefix_filter_document_title_separator()
 }
 add_filter('document_title_separator', 'theme_prefix_filter_document_title_separator');
 
-// function load_post_type_patterns($editor_settings, $post)
-// {
-//     // Define an initial pattern for the 'page' post type
-//     if ('page' === $post->post_type) {
-//         $editor_settings['__experimentalFeatures']['unfilteredTemplates']['page_template'] = array(
-//             array(
-//                 'title' => 'Custom Page Title Area',
-//                 'content' => '<!-- wp:pattern {"slug":"kcg/page-title-area"} /-->',
-//             ),
-//         );
-//         $editor_settings['template'] = 'page_template';
-//     }
-
-//     return $editor_settings;
-// }
-
-// add_filter('block_editor_settings_all', 'load_post_type_patterns', 10, 2);
-
-
 function custom_year_shortcode()
 {
     return date_i18n('Y');

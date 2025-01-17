@@ -97,14 +97,38 @@
             "fluid": true,
             "fontFamilies": [
                 {
+                    "fontFamily": "'Quicksand', sans-serif",
                     "name": "Headings",
                     "slug": "headings",
-                    "fontFamily": "'Quicksand', sans-serif;"
+                    "fontFace": [
+                        {
+                            "fontFamily": "Quicksand",
+                            "fontWeight": "300 700",
+                            "fontStyle": "normal",
+                            "src": [ "file:./assets/fonts/Quicksand-VariableFont_wght.ttf" ]
+                        }
+                    ]
                 },
                 {
+                    "fontFamily": "'Open Sans', sans-serif",
                     "name": "Body",
                     "slug": "body",
-                    "fontFamily": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+                    "fontFace": [
+						{
+							"fontFamily": "Open Sans",
+							"fontWeight": "400 700",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [ "file:./assets/fonts/OpenSans-VariableFont.ttf" ]
+						},
+						{
+							"fontFamily": "Open Sans",
+							"fontWeight": "400 700",
+							"fontStyle": "italic",
+							"fontStretch": "normal",
+							"src": [ "file:./assets/fonts/OpenSans-Italic-VariableFont.ttf" ]
+						}
+					]
                 }
             ]
         },
@@ -142,15 +166,27 @@
                         }
                     }
                 }
+            },
+            "core/heading": {
+                "color": {
+                    "text": "var:preset|color|primary"
+                }
             }
         },
         "elements": {
             "heading": {
                 "typography": {
-                    "fontFamily": "var:preset|font-family|headings"
+                    "fontFamily": "var:preset|font-family|headings",
+                    "fontWeight": "bold"
                 },
                 "color": {
                     "text": "var:preset|color|secondary"
+                },
+                "spacing": {
+                    "margin": {
+                        "bottom": "0",
+                        "top": "0"
+                    }
                 }
             },
             "h1": {
@@ -158,7 +194,7 @@
                     "fontSize": "2.8rem"
                 },
                 "color": {
-                    "text": "var:preset|color|secondary"
+                    "text": "var:preset|color|primary"
                 }
             },
             "h2": {
@@ -209,7 +245,7 @@
                 "css": "transition: background-color 0.3s !important;",
                 "typography": {
                     "fontFamily": "var:preset|font-family|headings",
-                    "fontWeight": "600"
+                    "fontWeight": "700"
                 },
                 "border": {
                     "radius": "5px"

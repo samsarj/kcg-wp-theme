@@ -14,10 +14,6 @@ function kcg_enqueue_scripts()
     // Enqueue Customised Tagling JS
     wp_enqueue_script('custom-tagline-js', get_template_directory_uri() . '/assets/js/hero-tagline.js', array(), null, true);
 
-    // Enqueue Customised Elvanto CSS & JS
-    wp_enqueue_style('custom-elvanto-css', get_template_directory_uri() . '/assets/css/elvanto-swiper.css', array(), null);
-    wp_enqueue_script('custom-elvanto-js', get_template_directory_uri() . '/assets/js/elvanto-swiper.js', array(), null, true);
-
     // Localize script with PHP variables
     $theme_vars = array(
         'themeDirectory' => get_template_directory_uri(),

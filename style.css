@@ -4,7 +4,7 @@ Author: Sam Sarjudeen
 Author URI: https://sarj.uk/
 Description: The WordPress theme built for King's Church Guildford
 Tags:
-Version: 1.1.0
+Version: 1.2.0
 Requires at least: 6.6
 Tested up to: 6.6
 License: GNU General Public License v2 or later
@@ -34,7 +34,6 @@ body {
 
 /* Transparent navbar for front page */
 .navbar-transparent {
-  /* background-image: linear-gradient(var(--wp--preset--color--light), transparent); */
   background-color: transparent;
   transition: background-color 1.5s;
 }
@@ -50,7 +49,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1vh 0;
   width: 100%;
 }
 
@@ -121,7 +119,6 @@ body {
 
 .mobile-menu nav ul li {
   padding: 10px 20px;
-  /* margin-bottom: 12px; */
   font-size: 20px;
   position: relative;
 }
@@ -144,13 +141,6 @@ body {
 
   .nav-menu-left-container {
     justify-content: flex-start !important;
-    /* margin-left: 0 !important; */
-    /* padding: 0 0 0 4vw; */
-  }
-
-  .nav-menu-right-container {
-    /* justify-content: flex-end; */
-    /* padding: 0 4vw 0 0; */
   }
 }
 
@@ -227,4 +217,8 @@ body {
 
 a {
   transition: all ease 0.3s;
+}
+
+.wp-block-button__link:hover {
+  transform: scale(1.04) !important;
 }

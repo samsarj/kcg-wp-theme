@@ -42,6 +42,21 @@
 					"slug": "dark"
 				},
 				{
+					"color": "#E6323B",
+					"name": "Little Lights 1",
+					"slug": "little-lights-1"
+				},
+				{
+					"color": "#EA6B12",
+					"name": "Little Lights 2",
+					"slug": "little-lights-2"
+				},
+				{
+					"color": "#FFF2D3",
+					"name": "Little Lights 3",
+					"slug": "little-lights-3"
+				},
+				{
 					"color": "#CE168D",
 					"name": "Creche 1",
 					"slug": "creche-1"
@@ -93,7 +108,19 @@
 				}
 			]
 		},
+		"layout": {
+			"contentSize": "800px",
+			"wideSize": "1200px"
+		},
 		"spacing": {
+			"units": [
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw",
+				"%"
+			],
 			"blockGap": null
 		},
 		"typography": {
@@ -143,6 +170,7 @@
 		}
 	},
 	"styles": {
+		"css": "",
 		"blocks": {
 			"core/button": {
 				"variations": {
@@ -165,9 +193,47 @@
 					}
 				}
 			},
-			"core/heading": {
+			"core/navigation": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--headings)",
+					"fontWeight": "bold",
+					"textTransform": "uppercase"
+				},
 				"color": {
 					"text": "var(--wp--preset--color--primary)"
+				},
+				"elements": {
+					"link": {
+						":hover": {
+							"color": {
+								"text": "var(--wp--preset--color--accent-2) !important"
+							}
+						}
+					}
+				}
+			},
+			"core/navigation-submenu": {
+				"color": {
+					"text": "var(--wp--preset--color--primary) !important"
+				},
+				"elements": {
+					"link": {
+						":hover": {
+							"color": {
+								"text": "var(--wp--preset--color--accent-2) !important"
+							}
+						}
+					}
+				}
+			},
+			"core/group": {
+				"spacing": {
+					"padding": {
+						"top": "var(--wp--preset--spacing--50)",
+						"right": "var(--wp--preset--spacing--50)",
+						"bottom": "var(--wp--preset--spacing--50)",
+						"left": "var(--wp--preset--spacing--50)"
+					}
 				}
 			}
 		},
@@ -180,7 +246,8 @@
 				":hover": {
 					"color": {
 						"background": "var(--wp--preset--color--primary)"
-					}
+					},
+					"css": "transform: scale(1.04) !important"
 				},
 				"border": {
 					"radius": "5px"
@@ -189,7 +256,6 @@
 					"background": "var(--wp--preset--color--secondary)",
 					"text": "white"
 				},
-				"css": "transition: background-color 0.3s !important;",
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--headings)",
 					"fontWeight": "700"
@@ -256,7 +322,7 @@
 					}
 				},
 				"color": {
-					"text": "inherit"
+					"text": "var(--wp--preset--color--accent-3)"
 				},
 				"typography": {
 					"textDecoration": "none"

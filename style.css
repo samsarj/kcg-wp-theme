@@ -216,3 +216,19 @@ a {
 .wp-block-button__link:hover {
   transform: scale(1.04) !important;
 }
+
+.elvanto-modal-bg {
+	position: fixed !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.elvanto-modal-wrapper {
+	position: unset !important;;
+	top: unset !important;
+	left: unset !important;
+	bottom: unset !important;
+	right: unset !important;
+	width: 90%;
+}

@@ -1,5 +1,6 @@
 /*
 Theme Name: King's Church Guildford
+<<<<<<< HEAD
 Author: Sam Sarjudeen
 Author URI: https://sarj.uk/
 Description: The WordPress theme built for King's Church Guildford
@@ -231,4 +232,36 @@ a {
 	bottom: unset !important;
 	right: unset !important;
 	width: 90%;
+=======
+Theme URI: 
+Author: Sam Sarjudeen
+Author URI: 
+Description: WordPress theme for King's Church Guildford.
+Requires at least: 6.8
+Tested up to: 6.8
+Requires PHP: 5.7
+Version: 2.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: kcg-theme
+Tags: 
+*/
+
+.is-layout-grid {
+    gap: 0;
+}
+
+@media screen and (min-width: 1024px) {
+    .is-layout-grid {
+        grid-template-columns: repeat(3,
+                1fr) !important;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .is-layout-grid {
+        grid-template-columns: repeat(2,
+                1fr) !important;
+    }
+>>>>>>> 3beaf08 (Starting afresh)
 }

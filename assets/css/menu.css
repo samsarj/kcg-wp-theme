@@ -1,0 +1,13 @@
+.wp-block-navigation__submenu-container {
+  min-width: unset !important;
+}
+
+.wp-block-navigation__submenu-container li,
+.wp-block-navigation-submenu li {
+  width: 100%;
+}
+
+.wp-block-navigation__submenu-container li *,
+.wp-block-navigation-submenu li * {
+  white-space: nowrap;
+}

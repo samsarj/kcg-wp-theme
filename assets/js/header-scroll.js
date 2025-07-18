@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector(".header-inner");
   const logo = document.getElementById("lottie-logo");
 
-  const themePath = window.location.origin + "/wp-content/themes/kcg-theme";
+  const themePath = window.location.origin + "/wp-content/themes/kcg-wp-theme";
   const animationPath = themePath + "/assets/anim/logo_kcg.json";
   
   const animation = lottie.loadAnimation({
@@ -12,6 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     autoplay: false,
     path: animationPath,
   });
+
+  // Make logo clickable to navigate to home page
+  logo.addEventListener("click", () => {
+    window.location.href = window.location.origin;
+  });
+
+  // Add cursor pointer style to indicate it's clickable
+  logo.style.cursor = "pointer";
 
   let isScrolled = false;
   let isAnimating = false;
@@ -56,4 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.addEventListener("scroll", requestTick);
+  
+  // Check initial scroll position on page load
+  updateHeader();
 });

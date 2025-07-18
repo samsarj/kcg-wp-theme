@@ -13,21 +13,77 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kcg-theme
 Tags: 
 */
+/* 
+.wp-block-navigation-item__label {
+    transition: color 0.3s;
+} */
 
-.is-layout-grid {
-    gap: 0;
+html {
+  scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 @media screen and (min-width: 1024px) {
-    .is-layout-grid {
-        grid-template-columns: repeat(3,
-                1fr) !important;
-    }
+  .is-layout-grid {
+    grid-template-columns: repeat(3,
+        1fr) !important;
+  }
 }
 
 @media screen and (max-width: 1023px) {
-    .is-layout-grid {
-        grid-template-columns: repeat(2,
-                1fr) !important;
-    }
+  .is-layout-grid {
+    grid-template-columns: repeat(2,
+        1fr) !important;
+  }
+}
+
+a {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  transform: scale(1.04);
+  filter: brightness(1.2);
+}
+
+a:active {
+  filter: brightness(0.8);
+  transform: scale(0.96);
+}
+
+a:where(:not(.wp-element-button)) {
+  text-underline-offset: 0.1rem;
+  transition: all 0.3s;
+}
+
+a:where(:not(.wp-element-button)):hover {
+  text-underline-offset: 0.2rem;
+}
+
+/* Specific styles for hero text links */
+
+.hero-text a {
+  text-decoration: none;
+}
+
+.hero-text a:hover {
+  text-decoration: underline;
+}
+
+/* Fixes for column blocks and cover blocks on mobile devices */
+
+@media screen and (max-width: 768px) {
+  .wp-block-column>.wp-block-cover {
+    min-height: calc(9 / 16 * 100vw) !important;
+  }
+
+  .wp-block-columns.reverse-mobile {
+    flex-direction: column-reverse;
+  }
 }

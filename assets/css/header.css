@@ -43,7 +43,7 @@ header {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 936px) {
   .header-inner {
     padding: 0.5rem 1rem;
     height: 20vh;

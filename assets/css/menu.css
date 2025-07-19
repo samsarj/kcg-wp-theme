@@ -7,13 +7,33 @@
   --navigation-layout-align: center;
 }
 
-@media screen and (max-width: 600px) {
+@media ( min-width: 937px ) {
+    .wp-block-navigation__responsive-container-open:not(.always-shown) {
+      display: none !important;
+    }
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+      display: block !important;
+    }
+}
+
+/* Disable WP default breakpoints for navigation */
+
+@media ( min-width: 600px ) {
+    .wp-block-navigation__responsive-container-open:not(.always-shown) {
+      display: flex;
+    }
+    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+      display: none;
+    }
+}
+
+@media screen and (max-width: 936px) {
 
   .wp-block-navigation__responsive-container.has-modal-open.is-menu-open {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background-color: var(--wp--preset--color--primary);
+    /* color: var(--wp--preset--color--primary); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,11 +41,16 @@
     overflow-y: auto;
   }
 
+  .wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open {
+    /* color: var(--wp--preset--color--primary); */
+  }
+
   .wp-block-navigation__responsive-container.has-modal-open.is-menu-open .wp-block-navigation__responsive-container-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    padding-top: 1rem;
+    gap: 1rem;
     width: 100%;
   }
 

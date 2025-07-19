@@ -13,13 +13,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kcg-theme
 Tags: 
 */
-/* 
-.wp-block-navigation-item__label {
-    transition: color 0.3s;
-} */
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 10vh;
 }
 
 *,

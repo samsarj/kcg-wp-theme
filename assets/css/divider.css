@@ -22,3 +22,29 @@
 .divider polygon {
   filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0 5px);
 }
+
+@keyframes dividerPriMove {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.divider-primary {
+  animation: dividerPriMove 20s ease-in-out infinite;
+}
+
+@keyframes dividerLightMove {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+}
+
+.divider-light {
+  animation: dividerLightMove 25s ease-in-out infinite;
+}

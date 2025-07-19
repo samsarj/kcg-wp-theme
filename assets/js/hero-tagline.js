@@ -27,15 +27,15 @@ function initTaglineAnimation() {
     gsap.to(line, {
       opacity: 0,
       scale: 0.5,
-      rotationX: 180,
-      duration: 0.5,
+      rotationY: 180,
+      duration: 0.25,
       onComplete: () => {
         line.textContent = newText;
         gsap.to(line, {
           opacity: 1,
           scale: 1,
-          rotationX: 0,
-          duration: 0.5,
+          rotationY: 0,
+          duration: 0.25,
         });
       },
     });

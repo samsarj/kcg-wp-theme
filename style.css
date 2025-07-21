@@ -15,8 +15,8 @@ Tags:
 */
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 10vh;
+  scroll-behavior: smooth; /* Anchor link smooth scrolling */
+  scroll-padding-top: 10vh; /* Adjust for sticky header */
 }
 
 *,
@@ -55,12 +55,12 @@ a:active {
 }
 
 a:where(:not(.wp-element-button)) {
-  text-underline-offset: 0.1rem;
+  text-underline-offset: 0.2rem;
   transition: all 0.3s;
 }
 
 a:where(:not(.wp-element-button)):hover {
-  text-underline-offset: 0.2rem;
+  text-underline-offset: 0.3rem;
 }
 
 /* Specific styles for hero text links */

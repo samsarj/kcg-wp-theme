@@ -2,13 +2,46 @@
 <main class="content-padding">
     <!-- wp:group {"tagName":"main","layout":{"type":"constrained"}, "style":{"spacing":{"margin":{"top":"20vh"}}}} -->
     <div class="wp-block-group" style="margin-top:20vh;">
-        <!-- wp:shortcode -->
-        [series heading="h1"]
-        <!-- /wp:shortcode -->
+        <!-- wp:query-title {"type":"archive","level":1} /-->
+        <!-- wp:term-description /-->
         
-        <!-- wp:shortcode -->
-        [sermon_archive]
-        <!-- /wp:shortcode -->
+        <!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"sermon","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
+        <div class="wp-block-query">
+            <!-- wp:post-template {"className":"sermon-cards"} -->
+            <!-- wp:group {"className":"sermon-card","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+            <div class="wp-block-group sermon-card">
+                <!-- wp:group {"className":"sermon-card-sermon","style":{"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"constrained"}} -->
+                <div class="wp-block-group sermon-card-sermon">
+                    <!-- wp:post-title {"level":2,"isLink":true} /-->
+
+                    <!-- wp:template-part {"slug":"sermon-meta","theme":"kcg-wp-theme"} /-->
+
+                    <!-- wp:post-excerpt /-->
+                </div>
+                <!-- /wp:group -->
+
+                <!-- wp:group {"className":"sermon-card-series"} -->
+                <div class="wp-block-group sermon-card-series">
+                    <!-- wp:post-featured-image {"width":"150px","height":"150px"} /-->
+                </div>
+                <!-- /wp:group -->
+            </div>
+            <!-- /wp:group -->
+            <!-- /wp:post-template -->
+
+            <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+            <div class="wp-block-query-pagination">
+                <!-- wp:query-pagination-previous /-->
+                <!-- wp:query-pagination-numbers /-->
+                <!-- wp:query-pagination-next /-->
+            </div>
+            <!-- /wp:query-pagination -->
+
+            <!-- wp:query-no-results -->
+            <!-- wp:paragraph /-->
+            <!-- /wp:query-no-results -->
+        </div>
+        <!-- /wp:query -->
     </div>
     <!-- /wp:group -->
 </main>

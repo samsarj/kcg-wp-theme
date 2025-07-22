@@ -15,8 +15,10 @@ Tags:
 */
 
 html {
-  scroll-behavior: smooth; /* Anchor link smooth scrolling */
-  scroll-padding-top: 10vh; /* Adjust for sticky header */
+  scroll-behavior: smooth;
+  /* Anchor link smooth scrolling */
+  scroll-padding-top: 10vh;
+  /* Adjust for sticky header */
 }
 
 *,
@@ -83,4 +85,18 @@ a:where(:not(.wp-element-button)):hover {
   .wp-block-columns.reverse-mobile {
     flex-direction: column-reverse;
   }
+}
+
+
+
+.kcg-card {
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid var(--wp--preset--color--light);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
 }

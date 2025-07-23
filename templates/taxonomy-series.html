@@ -1,48 +1,47 @@
-<!-- wp:template-part {"slug":"header"} /-->
-<main class="content-padding">
-    <!-- wp:group {"tagName":"main","layout":{"type":"constrained"}, "style":{"spacing":{"margin":{"top":"20vh"}}}} -->
-    <div class="wp-block-group" style="margin-top:20vh;">
-        <!-- wp:query-title {"type":"archive","level":1} /-->
-        <!-- wp:term-description /-->
-        
-        <!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"sermon","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
-        <div class="wp-block-query">
-            <!-- wp:post-template {"className":"sermon-cards"} -->
-            <!-- wp:group {"className":"sermon-card","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
-            <div class="wp-block-group sermon-card">
-                <!-- wp:group {"className":"sermon-card-sermon","style":{"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"constrained"}} -->
-                <div class="wp-block-group sermon-card-sermon">
-                    <!-- wp:post-title {"level":2,"isLink":true} /-->
+<!-- wp:template-part {"slug":"header","theme":"kcg-wp-theme"} /-->
 
-                    <!-- wp:template-part {"slug":"sermon-meta","theme":"kcg-wp-theme"} /-->
+<!-- wp:group {"tagName":"main","style":{"spacing":{"margin":{"top":"20vh"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="margin-top:20vh">
+    <!-- wp:query-title {"type":"archive", "textAlign":"center"} /-->
+    <!-- wp:term-description /-->
 
-                    <!-- wp:post-excerpt /-->
-                </div>
-                <!-- /wp:group -->
-
-                <!-- wp:group {"className":"sermon-card-series"} -->
-                <div class="wp-block-group sermon-card-series">
-                    <!-- wp:post-featured-image {"width":"150px","height":"150px"} /-->
-                </div>
-                <!-- /wp:group -->
+    <!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"sermon","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
+    <div class="wp-block-query">
+        <!-- wp:post-template {"className":"sermon-cards"} -->
+        <!-- wp:group {"className":"kcg-card"} -->
+        <div class="wp-block-group kcg-card">
+            <!-- wp:group {"className":"sermon-card-content","style":{"layout":{"selfStretch":"fill","flexSize":null}}} -->
+            <div class="wp-block-group sermon-card-content">
+                <!-- wp:post-title {"level":2,"isLink":true} /-->
+                
+                <!-- wp:post-terms {"term":"series","prefix":"Series: "} /-->
+                
+                <!-- wp:post-content /-->
             </div>
             <!-- /wp:group -->
-            <!-- /wp:post-template -->
-
-            <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
-            <div class="wp-block-query-pagination">
-                <!-- wp:query-pagination-previous /-->
-                <!-- wp:query-pagination-numbers /-->
-                <!-- wp:query-pagination-next /-->
-            </div>
-            <!-- /wp:query-pagination -->
-
-            <!-- wp:query-no-results -->
-            <!-- wp:paragraph /-->
-            <!-- /wp:query-no-results -->
+            
+            <!-- wp:template-part {"slug":"series-image","theme":"kcg-wp-theme"} /-->
         </div>
-        <!-- /wp:query -->
+        <!-- /wp:group -->
+        <!-- /wp:post-template -->
+
+        <!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+        <div class="wp-block-query-pagination">
+            <!-- wp:query-pagination-previous /-->
+            <!-- wp:query-pagination-numbers /-->
+            <!-- wp:query-pagination-next /-->
+        </div>
+        <!-- /wp:query-pagination -->
+
+        <!-- wp:query-no-results -->
+        <!-- wp:paragraph {"placeholder":"Add text or blocks that will display when a query returns no results."} -->
+        <p>No sermons found.</p>
+        <!-- /wp:paragraph -->
+        <!-- /wp:query-no-results -->
+    </div>
+    <!-- /wp:query -->
     </div>
     <!-- /wp:group -->
 </main>
-<!-- wp:template-part {"slug":"footer"} -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

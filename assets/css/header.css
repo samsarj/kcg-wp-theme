@@ -24,24 +24,14 @@ header {
   padding: 0.5rem 2rem;
 }
 
-/* Conditional backgrounds by body class */
-.is-home .header-inner {
+.header-inner {
   background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
-}
-
-.not-home .header-inner {
-  background: #fff;
-}
-
-.not-home .entry-content {
-  padding-top: 20vh;
 }
 
 .site-logo {
   height: 100%;
   width: auto;
 }
-
 
 @media screen and (max-width: 936px) {
   .header-inner {
@@ -71,6 +61,5 @@ header {
   nav {
     margin-left: auto;
   }
-
 
 }

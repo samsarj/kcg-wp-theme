@@ -1,7 +1,7 @@
 <?php
 function kcg_scripts()
 {
-    wp_enqueue_style('kcg-style', get_stylesheet_uri());
+    wp_enqueue_style('kcg-style', get_stylesheet_uri(), array(), filemtime(get_stylesheet_directory() . '/style.css'));
 
     wp_enqueue_script('lottie', 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js', [], null, true);
     wp_enqueue_script('kcg-header-scroll', get_template_directory_uri() . '/assets/js/header-scroll.js', [], null, true);

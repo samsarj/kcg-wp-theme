@@ -1,56 +1,49 @@
-.divider {
-  display: flex;
-  width: 100%;
-  height: 15vh;
+.divider-wrapper {
   position: absolute;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  overflow: hidden;
+  pointer-events: none;
   z-index: 10;
 }
 
-.divider-primary {
-  fill: var(--wp--preset--color--primary);
-}
-
-.divider-secondary {
-  fill: var(--wp--preset--color--secondary);
-}
-
-.divider-light {
-  fill: var(--wp--preset--color--accent-1);
+.divider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  shape-rendering: geometricPrecision;
 }
 
 .divider polygon {
-  filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0 5px);
+  filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0 1rem);
 }
 
-@keyframes dividerPriMove {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(20px);
-  }
+.layer-light polygon {
+  fill: var(--wp--preset--color--accent-1);
+}
+.layer-primary polygon {
+  fill: var(--wp--preset--color--primary);
+}
+.layer-secondary polygon {
+  fill: var(--wp--preset--color--secondary);
 }
 
-.divider-primary {
-  animation: dividerPriMove 20s ease-in-out infinite;
+.layer-light {
+  animation: waveMoveLight 25s ease-in-out infinite;
+}
+.layer-primary {
+  animation: waveMovePrimary 20s ease-in-out infinite;
 }
 
-@keyframes dividerLightMove {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(30px);
-  }
+@keyframes waveMoveLight {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(30px); }
 }
-
-.divider-light {
-  animation: dividerLightMove 25s ease-in-out infinite;
+@keyframes waveMovePrimary {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(20px); }
 }

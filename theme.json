@@ -358,6 +358,43 @@
 			"fontSize": "18px"
 		}
 	},
+	"customTemplates": [
+		{
+			"name": "page-simple",
+			"title": "Simple Page",
+			"postTypes": [
+				"page"
+			]
+		},
+		{
+			"name": "single-sermon",
+			"title": "Single Sermon",
+			"postTypes": [
+				"sermon"
+			]
+		},
+		{
+			"name": "archive-sermon",
+			"title": "Sermon Archive",
+			"postTypes": [
+				"sermon"
+			]
+		},
+		{
+			"name": "taxonomy-series",
+			"title": "Series Archive",
+			"postTypes": [
+				"sermon"
+			]
+		},
+		{
+			"name": "taxonomy-speaker",
+			"title": "Speaker Archive",
+			"postTypes": [
+				"sermon"
+			]
+		}
+	],
 	"templateParts": [
 		{
 			"area": "header",

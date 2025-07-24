@@ -8,23 +8,25 @@
 }
 
 /* Adjust breakpoint for mobile menu */
-@media ( min-width: 937px ) {
-    .wp-block-navigation__responsive-container-open:not(.always-shown) {
-      display: none !important;
-    }
-    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
-      display: block !important;
-    }
+@media (min-width: 937px) {
+  .wp-block-navigation__responsive-container-open:not(.always-shown) {
+    display: none !important;
+  }
+
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+    display: block !important;
+  }
 }
 
 /* Disable WP default breakpoints for navigation */
-@media ( min-width: 600px ) {
-    .wp-block-navigation__responsive-container-open:not(.always-shown) {
-      display: flex;
-    }
-    .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
-      display: none;
-    }
+@media (min-width: 600px) {
+  .wp-block-navigation__responsive-container-open:not(.always-shown) {
+    display: flex;
+  }
+
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+    display: none;
+  }
 }
 
 /* Responsive navigation styles */

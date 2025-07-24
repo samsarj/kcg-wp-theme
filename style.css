@@ -9,7 +9,7 @@ Description: WordPress theme for King's Church Guildford.
 Requires at least: 6.8
 Tested up to: 6.8
 Requires PHP: 5.7
-Version: 2.1.0
+Version: 2.1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kcg-wp-theme
@@ -100,4 +100,10 @@ a:where(:not(.wp-element-button)):hover {
   display: flex;
   align-items: center;
   transition: all 0.3s;
+}
+
+.full-height {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
 }

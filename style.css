@@ -105,8 +105,6 @@ a:where(:not(.wp-element-button)):hover {
 .full-height {
   min-height: 100vh;
   min-height: 100svh;
-  min-height: 100dvh;
   height: 100vh;
   height: 100svh;
-  height: 100dvh;
 }

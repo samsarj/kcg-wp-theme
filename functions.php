@@ -15,3 +15,9 @@ function kcg_scripts()
     wp_enqueue_style('kcg-menu-style', get_template_directory_uri() . '/assets/css/menu.css', [], filemtime(get_template_directory() . '/assets/css/menu.css'));
 }
 add_action('wp_enqueue_scripts', 'kcg_scripts');
+
+add_action( 'after_setup_theme', 'kcg_wp_theme_remove_core_patterns' );
+
+function kcg_wp_theme_remove_core_patterns() {
+	remove_theme_support( 'core-block-patterns' );
+}

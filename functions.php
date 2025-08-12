@@ -9,6 +9,8 @@ function kcg_scripts()
 
     wp_enqueue_style('kcg-divider-style', get_template_directory_uri() . '/assets/css/divider.css', [], filemtime(get_template_directory() . '/assets/css/divider.css'));
 
+    wp_enqueue_style('elvanto-modal-adjustments', get_template_directory_uri() . '/assets/css/elvanto.css', [], filemtime(get_template_directory() . '/assets/css/elvanto.css'));
+
     wp_enqueue_script('gsap', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js', [], null, true);
     wp_enqueue_script('kcg-tagline', get_template_directory_uri() . '/assets/js/hero-tagline.js', ['gsap'], null, true);
 

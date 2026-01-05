@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const logo = document.getElementById("lottie-logo");
 
   const themePath = window.location.origin + "/wp-content/themes/kcg-wp-theme";
-  const animationPath = themePath + "/assets/anim/logo_kcg.json";
+  const animationPath = themePath + "/assets/anim/logo_kcg_unified_animation.json";
+  const segmentStart = 186;
+  const segmentEnd = 270;
   
   const animation = lottie.loadAnimation({
     container: logo,
@@ -11,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     loop: false,
     autoplay: false,
     path: animationPath,
+  });
+
+  animation.addEventListener("DOMLoaded", () => {
+    animation.goToAndStop(segmentStart, true);
+  });
+
+  animation.addEventListener("complete", () => {
+    if (isAnimating) {
+      isAnimating = false;
+    }
   });
 
   // Make logo clickable to navigate to home page
@@ -25,6 +37,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let isAnimating = false;
   let ticking = false;
 
+  const playSegment = (forward) => {
+    const segment = forward ? [segmentStart, segmentEnd] : [segmentEnd, segmentStart];
+    isAnimating = true;
+    animation.playSegments(segment, true);
+  };
+
   const updateHeader = () => {
     const currentY = window.scrollY;
     const threshold = (20 * window.innerHeight) / 100;
@@ -32,24 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const shouldToggle = isScrolled ? currentY < threshold : currentY > threshold;
 
     if (shouldToggle && !isAnimating) {
-      isAnimating = true;
-      
       if (!isScrolled && shouldBeScrolled) {
         header.classList.add("scrolled");
-        animation.setDirection(1);
-        animation.play();
+        playSegment(true);
         isScrolled = true;
       } else if (isScrolled && !shouldBeScrolled) {
         header.classList.remove("scrolled");
-        animation.setDirection(-1);
-        animation.play();
+        playSegment(false);
         isScrolled = false;
       }
-
-      // Reset animation flag after animation completes
-      setTimeout(() => {
-        isAnimating = false;
-      }, animation.totalFrames ? (animation.totalFrames / animation.frameRate) * 1000 : 300);
     }
   };
 

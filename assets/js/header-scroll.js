@@ -16,7 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   animation.addEventListener("DOMLoaded", () => {
-    animation.goToAndStop(segmentStart, true);
+    // Set initial frame based on scroll position
+    const threshold = (20 * window.innerHeight) / 100;
+    if (window.scrollY > threshold) {
+      animation.goToAndStop(segmentEnd - 1, true);
+    } else {
+      animation.goToAndStop(segmentStart - 1, true);
+    }
   });
 
   animation.addEventListener("complete", () => {
@@ -33,9 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add cursor pointer style to indicate it's clickable
   logo.style.cursor = "pointer";
 
-  let isScrolled = false;
+  const threshold = (20 * window.innerHeight) / 100;
+  let isScrolled = window.scrollY > threshold;
   let isAnimating = false;
   let ticking = false;
+
+  // Apply initial state based on scroll position
+  if (isScrolled) {
+    header.classList.add("scrolled");
+  }
 
   const playSegment = (forward) => {
     const segment = forward ? [segmentStart, segmentEnd] : [segmentEnd, segmentStart];
@@ -45,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const updateHeader = () => {
     const currentY = window.scrollY;
-    const threshold = (20 * window.innerHeight) / 100;
     const shouldBeScrolled = currentY > threshold;
     const shouldToggle = isScrolled ? currentY < threshold : currentY > threshold;
 
